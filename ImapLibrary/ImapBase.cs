@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Net;
+using System.Net.Security;
 using System.Net.Sockets;
 using System.IO;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Joshi.Utils.Imap
 {
@@ -334,6 +337,10 @@ namespace Joshi.Utils.Imap
 		/// User Password
 		/// </summary>
 		protected string m_sPassword = "";
+        /// <summary>
+        /// SSL Enabled
+        /// </summary>
+	    protected bool m_bSSLEnabled = false;
 		/// <summary>
 		/// Is Imap server connected
 		/// </summary>
@@ -345,7 +352,7 @@ namespace Joshi.Utils.Imap
 		/// <summary>
 		/// Network stream object
 		/// </summary>
-		NetworkStream m_oNetStrm;
+		Stream m_oNetStrm;
 		/// <summary>
 		/// StreamReader object
 		/// </summary>
@@ -416,13 +423,14 @@ namespace Joshi.Utils.Imap
 			}
 		}
 
-		/// <summary>
-		/// Connect to specified host and port
-		/// </summary>
-		/// <param name="sHost">Imap host</param>
-		/// <param name="nPort">Imap port</param>
-		/// <returns>ImapResponseEnum type</returns>
-		protected ImapResponseEnum Connect(string sHost, ushort nPort) 
+	    /// <summary>
+	    /// Connect to specified host and port
+	    /// </summary>
+	    /// <param name="sHost">Imap host</param>
+	    /// <param name="nPort">Imap port</param>
+	    /// <param name="sslEnabled"> </param>
+	    /// <returns>ImapResponseEnum type</returns>
+	    protected ImapResponseEnum Connect(string sHost, ushort nPort, bool sslEnabled=false) 
 		{
 			IMAP_COMMAND_VAL = 0;
 			ImapResponseEnum eImapResponse = ImapResponseEnum.IMAP_SUCCESS_RESPONSE;
@@ -430,8 +438,37 @@ namespace Joshi.Utils.Imap
 			try 
 			{
 				m_oImapServ = new TcpClient(sHost, nPort);
-				m_oNetStrm = m_oImapServ.GetStream();
-				m_oRdStrm = new StreamReader(m_oImapServ.GetStream());
+                if(sslEnabled)
+                {
+                   
+                    var sslStrm = new SslStream(m_oImapServ.GetStream(), false, new RemoteCertificateValidationCallback(ValidateServerCertificate), null);
+                    //m_SSLStream.ReadTimeout = 30000;
+
+                    try
+                    {
+                        sslStrm.AuthenticateAsClient(sHost);
+                    }
+                    catch (AuthenticationException e)
+                    {
+                        Console.WriteLine("Exception: {0}", e.Message);
+                        if (e.InnerException != null)
+                        {
+                            Console.WriteLine("Inner exception: {0}", e.InnerException.Message);
+                        }
+                        Console.WriteLine("Authentication failed - closing the connection.");
+                        m_oImapServ.Close();
+                        return ImapResponseEnum.IMAP_FAILURE_RESPONSE;
+                    }
+
+                    m_oNetStrm = (Stream) sslStrm;
+                    m_oRdStrm = new StreamReader(sslStrm);
+                }else
+                {
+                    m_oNetStrm = m_oImapServ.GetStream();
+                    m_oRdStrm = new StreamReader(m_oImapServ.GetStream());
+                }
+				
+				
 				string sResult = m_oRdStrm.ReadLine();
 				if (sResult.StartsWith(IMAP_OK_SERVER_RESPONSE)== true)
 				{
@@ -450,7 +487,8 @@ namespace Joshi.Utils.Imap
 				throw e_connect;
 			}
 			m_sHost = sHost;	
-			m_nPort = nPort;  
+			m_nPort = nPort;
+	        m_bSSLEnabled = sslEnabled;
 			return eImapResponse;
 		}
 
@@ -668,6 +706,23 @@ namespace Joshi.Utils.Imap
 				throw e;
 			}
 		}
+        /// <summary>
+        /// Validate Certificate
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="certificate"></param>
+        /// <param name="chain"></param>
+        /// <param name="sslPolicyErrors"></param>
+        /// <returns></returns>
+        public bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            if (sslPolicyErrors == SslPolicyErrors.None)
+                return true;
+
+            Console.WriteLine("Failed to validate Server Certificate. Error: {0}", sslPolicyErrors);
+
+            return false;
+        }
 
 	
 

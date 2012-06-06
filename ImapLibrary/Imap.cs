@@ -58,16 +58,17 @@ namespace Joshi.Utils.Imap
 			}
 		}
 
-/// <summary>
-/// Login to specified Imap host and port
-/// </summary>
-/// <param name="sHost">Imap server name</param>
-/// <param name="nPort">Imap server port</param>
-/// <param name="sUserId">User's login id</param>
-/// <param name="sPassword">User's password</param>
-/// <exception cref="IMAP_ERR_LOGIN"
-/// <exception cref="IMAP_ERR_INVALIDPARAM"
-		public void Login(string sHost, ushort nPort, string sUserId, string sPassword ) 
+	    /// <summary>
+	    /// Login to specified Imap host and port
+	    /// </summary>
+	    /// <param name="sHost">Imap server name</param>
+	    /// <param name="nPort">Imap server port</param>
+	    /// <param name="sUserId">User's login id</param>
+	    /// <param name="sPassword">User's password</param>
+	    /// <param name="sslEnabled"> </param>
+	    /// <exception cref="IMAP_ERR_LOGIN"
+	    /// <exception cref="IMAP_ERR_INVALIDPARAM"
+	    public void Login(string sHost, ushort nPort, string sUserId, string sPassword, bool sslEnabled=false ) 
 		{
 			ImapResponseEnum eImapResponse = ImapResponseEnum.IMAP_SUCCESS_RESPONSE;
 			ImapException e_login   = new ImapException (ImapException.ImapErrorEnum.IMAP_ERR_LOGIN, m_sUserId);
@@ -114,7 +115,7 @@ namespace Joshi.Utils.Imap
 			
 			try 
 			{
-				eImapResponse = Connect(sHost, nPort);
+                eImapResponse = Connect(sHost, nPort, sslEnabled);
 				if (eImapResponse == ImapResponseEnum.IMAP_SUCCESS_RESPONSE)
 				{
 					m_bIsConnected = true;

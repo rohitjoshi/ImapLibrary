@@ -1,0 +1,7 @@
+C:\Users\rjoshi\Projects\ImapLibrary\ImapLibraryTest\bin\Debug\ImapLibraryTest.exe
+C:\Users\rjoshi\Projects\ImapLibrary\ImapLibraryTest\bin\Debug\ImapLibraryTest.pdb
+C:\Users\rjoshi\Projects\ImapLibrary\ImapLibraryTest\bin\Debug\ImapLibrary.dll
+C:\Users\rjoshi\Projects\ImapLibrary\ImapLibraryTest\bin\Debug\ImapLibrary.pdb
+C:\Users\rjoshi\Projects\ImapLibrary\ImapLibraryTest\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\rjoshi\Projects\ImapLibrary\ImapLibraryTest\obj\Debug\ImapLibraryTest.exe
+C:\Users\rjoshi\Projects\ImapLibrary\ImapLibraryTest\obj\Debug\ImapLibraryTest.pdb

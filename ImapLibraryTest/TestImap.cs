@@ -45,23 +45,45 @@ namespace ConsoleApplication1
 					{
 						case 1:
 						{
-							Console.Write("Host[]:");
+                            Console.Write("Host[imap.gmail.com]:");
 							string sHost = Console.ReadLine();
 							if (sHost.Length < 1)
-								sHost = "pots.dummydomain.com";
+								sHost = "imap.gmail.com";
+
+                            Console.Write("Port [993]:");
+                            string sPort = Console.ReadLine();
+                            if (sPort.Length < 1)
+                            {
+                                sPort = "993";
+                            }
+
+                            Console.Write("SSLEnabled[True]:");
+                            string sSslEnabled = Console.ReadLine();
+						    bool bSSL = true;
+                            if ( (sSslEnabled.Length < 1) || (String.Compare(sSslEnabled, "yes",true) == 0) || (String.Compare(sSslEnabled, "true",true) == 0) )
+                            {
+
+                                bSSL = true;
+                            }else
+                            {
+                                bSSL = false;
+                            }
 							Console.Write("User[]:");
 							string sUser = Console.ReadLine();
 							if (sUser.Length < 1)
 								sUser = "rjoshi";
 							Console.Write("Password []:");
-							string sPwd = Console.ReadLine();
+							string sPwd = ReadPassword();
 							if (sPwd.Length < 1)
 								sPwd = "";
+                           
 							Console.WriteLine("########################################");
 							Console.WriteLine("Host:{0}", sHost);
+                            Console.WriteLine("Port:{0}", sPort);
+                            Console.WriteLine("SSLEnabled:{0}", bSSL.ToString());
 							Console.WriteLine("User:{0}", sUser);
 							Console.WriteLine("########################################");
-							oImap.Login(sHost, sUser, sPwd);
+                            oImap.Login(sHost, Convert.ToUInt16(sPort), sUser, sPwd, bSSL);
 							
 
 						}
@@ -101,10 +123,8 @@ namespace ConsoleApplication1
 								sUid = "";
 							Console.Write("Fetch Body:[false]");
 							string sFetchBody = Console.ReadLine();
-							bool bFetchBody = false;
-							if (sFetchBody.ToLower() == "true")
-								bFetchBody = true;
-							ArrayList saArray = new ArrayList();
+						    bool bFetchBody = sFetchBody.ToLower() == "true";
+						    ArrayList saArray = new ArrayList();
 							string sFileName = sUid + ".xml";
 							XmlTextWriter oXmlWriter = new XmlTextWriter(sFileName,System.Text.Encoding.UTF8);
 							oXmlWriter.Formatting = Formatting.Indented;
@@ -147,6 +167,45 @@ namespace ConsoleApplication1
 				}
 			}
 
+
 		}
+        /// <summary>
+        /// Read password
+        /// </summary>
+        /// <returns></returns>
+        public static string ReadPassword()
+        {
+            string password = "";
+            ConsoleKeyInfo info = Console.ReadKey(true);
+            while (info.Key != ConsoleKey.Enter)
+            {
+                if (info.Key != ConsoleKey.Backspace)
+                {
+                    Console.Write("*");
+                    password += info.KeyChar;
+                }
+                else if (info.Key == ConsoleKey.Backspace)
+                {
+                    if (!string.IsNullOrEmpty(password))
+                    {
+                        // remove one character from the list of password characters
+                        password = password.Substring(0, password.Length - 1);
+                        // get the location of the cursor
+                        int pos = Console.CursorLeft;
+                        // move the cursor to the left by one character
+                        Console.SetCursorPosition(pos - 1, Console.CursorTop);
+                        // replace it with space
+                        Console.Write(" ");
+                        // move the cursor to the left by one character again
+                        Console.SetCursorPosition(pos - 1, Console.CursorTop);
+                    }
+                }
+                info = Console.ReadKey(true);
+            }
+
+            // add a new line because user pressed enter at the end of their password
+            Console.WriteLine();
+            return password;
+        }
 	}
 }
