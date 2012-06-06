@@ -566,6 +566,173 @@ namespace Joshi.Utils.Imap
 
 		}
 
+	    /// <summary>
+	    /// Store flag
+	    /// </summary>
+	    /// <param name="sUid"></param>
+	    /// <param name="flag"> E.g \Deleted </param>
+	    public void SetFlag(string sUid, string flag)
+        {
+            if (String.IsNullOrEmpty(sUid))
+            {
+                throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_INVALIDPARAM, "Invalid uid");
+            }
+            if (String.IsNullOrEmpty(flag))
+            {
+                throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_INVALIDPARAM, "Invalid flag");
+            }
+            ImapResponseEnum eImapResponse = ImapResponseEnum.IMAP_SUCCESS_RESPONSE;
+          
+
+            if (!m_bIsLoggedIn)
+            {
+                try
+                {
+                    Restore(false);
+                }
+                catch (ImapException e)
+                {
+                    if (e.Type != ImapException.ImapErrorEnum.IMAP_ERR_INSUFFICIENT_DATA)
+                        throw e;
+
+                    throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_NOTCONNECTED);
+                }
+            }
+            if (!m_bIsFolderSelected && !m_bIsFolderExamined)
+            {
+                throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_NOTSELECTED);
+            }
+           
+            ArrayList asResultArray = new ArrayList();
+            string sCommand = IMAP_UIDSTORE_COMMAND;
+            sCommand += " " + sUid + " " + IMAP_SETFLAGS_COMMAND + " " + flag  + IMAP_COMMAND_EOL;
+            try
+            {
+                eImapResponse = SendAndReceive(sCommand, ref asResultArray);
+                if (eImapResponse != ImapResponseEnum.IMAP_SUCCESS_RESPONSE)
+                {
+                    throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_SEARCH, asResultArray[0].ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Expunge
+        /// </summary>
+        public void Expunge()
+        {
+            
+            ImapResponseEnum eImapResponse = ImapResponseEnum.IMAP_SUCCESS_RESPONSE;
+            
+
+            if (!m_bIsLoggedIn)
+            {
+                try
+                {
+                    Restore(false);
+                }
+                catch (ImapException e)
+                {
+                    if (e.Type != ImapException.ImapErrorEnum.IMAP_ERR_INSUFFICIENT_DATA)
+                        throw e;
+
+                    throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_NOTCONNECTED);
+                }
+            }
+            if (!m_bIsFolderSelected && !m_bIsFolderExamined)
+            {
+                throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_NOTSELECTED);
+            }
+
+            ArrayList asResultArray = new ArrayList();
+            string sCommand = IMAP_EXPUNGE_COMMAND;
+            sCommand += IMAP_COMMAND_EOL;
+            try
+            {
+                eImapResponse = SendAndReceive(sCommand, ref asResultArray);
+                if (eImapResponse != ImapResponseEnum.IMAP_SUCCESS_RESPONSE)
+                {
+                    throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_SEARCH, asResultArray[0].ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Move message to specified folder
+        /// </summary>
+        /// <param name="sUid">UID of the message</param>
+        /// <param name="sFolderName"> Folder where you want to move the message</param>
+        public void MoveMessage(string sUid, string sFolderName)
+        {
+            CopyMessage(sUid, sFolderName);
+            SetFlag(sUid, "\\Deleted");
+            Expunge();
+        }
+
+        /// <summary>
+        /// Copy Message
+        /// </summary>
+        /// <param name="sUid">Either UID or range of uid e.g 1:2</param>
+        /// <param name="sFolderName">Folder where it needs to be copied</param>
+        public void CopyMessage(string sUid, string sFolderName)
+        {
+            ImapResponseEnum eImapResponse = ImapResponseEnum.IMAP_SUCCESS_RESPONSE;
+            
+            if (String.IsNullOrEmpty(sFolderName))
+            {
+                throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_INVALIDPARAM, "Invalid folder name.");
+            }
+            if (String.IsNullOrEmpty(sUid))
+            {
+                throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_INVALIDPARAM, "Invalid uid");
+            }
+            if (!m_bIsLoggedIn)
+            {
+                try
+                {
+                    Restore(false);
+                }
+                catch (ImapException e)
+                {
+                    if (e.Type != ImapException.ImapErrorEnum.IMAP_ERR_INSUFFICIENT_DATA)
+                        throw e;
+
+                    throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_NOTCONNECTED);
+                }
+            }
+            
+            if (!m_bIsFolderSelected && !m_bIsFolderExamined)
+            {
+                throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_NOTSELECTED);
+            }
+
+            ArrayList asResultArray = new ArrayList();
+            string sCommand = IMAP_UIDCOPY_COMMAND;
+            sCommand += " " + sUid  + " " + sFolderName + IMAP_COMMAND_EOL;
+            try
+            {
+                eImapResponse = SendAndReceive(sCommand, ref asResultArray);
+                if (eImapResponse != ImapResponseEnum.IMAP_SUCCESS_RESPONSE)
+                {
+                    throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_SEARCH, asResultArray[0].ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
+
+
 /// <summary>
 /// Search the messages by specified criterias
 /// </summary>
@@ -1062,6 +1229,7 @@ namespace Joshi.Utils.Imap
 							}
 							catch (ImapException e)
 							{
+                                Log(LogTypeEnum.ERROR, "Exception:Invalid Body Structure. Error:" + e.Message);
 								return false;
 							}
 						}
@@ -1972,99 +2140,4 @@ namespace Joshi.Utils.Imap
 }
 
 
-
-/****
-
-
-
-
-
-
-
-void FetchMessage(const String &sMessageUID,
-Xml &oMessageInfo)
-throw (ImapException);
-
-void FetchPartHeader(const String &sMessageUID,
-const String &sMessagePart,
-StringArray &asMessageHeader)
-throw (ImapException);
-
-void FetchPartHeaderAndBody(const String &sMessageUID,
-const String &sMessagePart,
-const String &sFilePath,
-StringArray &asMessageHeader)
-throw (ImapException);
-
-void StoreAudioMessage(const String &sFolderName,
-const String &sMessageSubject,
-const String &sMessageFlags,
-const String &sFilePath,
-String &sMessageUID)
-throw (ImapException);
-
-void DeleteMessage( const String &sMessageUID )
-throw (ImapException);
-void DoExpunge()
-throw (ImapException);
-
-		// Returns a comma separated list of flags
-void GetMsgFlags(const String &sMessageUID,
-StringArray &asMessageFlags)
-throw (ImapException);
-
-void SetMsgFlags(const String &sMessageUID,
-const String &sMessageFlags,
-BOOL bReset = FALSE)
-throw (ImapException);
-
-BOOL Logout();
-
-inline BOOL IsConnected() { return m_bConnected; }
-inline void GetHost(String &m_sHost) { m_sHost = m_m_sHost; }
-inline void GetUserName(String &sUser) { sUser = m_sUserName; }
-
-inline BOOL IsFolderSelected() { return m_bFolderSelected; }
-inline void GetMailbox(String &sMbox) { sMbox = m_m_sMailboxName; }
-
-inline unsigned GetTotalMessagesCount() { return m_m_nTotalMessages; }
-inline unsigned GetRecentMessagesCount() { return m_m_nRecentMessages; }
-inline unsigned GetFirstUnSeenMsgUID() { return m_m_nFirstUnSeenMsgUID; }
-inline BOOL HasUnSeenMessages() 
-{
-return (m_m_nFirstUnSeenMsgUID ? TRUE : FALSE); }
-
-private:
-
-	
-	
-
-void        ClearAll();
-
-BOOL     ValidateMsgFlags(String &sMessageFlags);
-
-void        GetHeader(const String &sMessageUID,
-const String &sPartNumber,
-StringArray &asMessageHeader)
-throw (ImapException);
-
-void        GetHeaderValue(const StringArray  &asHeader,
-const String  &sAttrName,
-String &sAttrValue);
-
-BOOL     IsMultipart(const StringArray  &asHeader);
-
-void        GetBodyStructure(const String &sMessageUID,
-XmlElement *pRootPart)
-throw (ImapException);
-
-void        GetMessage(const String &sMessageUID,
-const String &sPartNumber,
-BOOL         bBase64Encoded,
-const String &sFilePath)
-throw (ImapException);
-
-long        GetResponseSize(const String &sResponse)
-throw (ImapException);
-***/
 

@@ -199,6 +199,11 @@ namespace Joshi.Utils.Imap
 		/// Imap uid store command
 		/// </summary>
 		protected const string    IMAP_UIDSTORE_COMMAND = "UID STORE";
+
+        /// <summary>
+        /// Imap uid copy command
+        /// </summary>
+        protected const string IMAP_UIDCOPY_COMMAND = "UID COPY";
 		/// <summary>
 		/// Imap expunge command
 		/// </summary>
@@ -207,6 +212,16 @@ namespace Joshi.Utils.Imap
 		/// Imap noop command : NOOP
 		/// </summary>
 		protected const string    IMAP_NOOP_COMMAND = "NOOP";
+
+        /// <summary>
+        /// Imap add flags +flags
+        /// </summary>
+        protected const string IMAP_SETFLAGS_COMMAND = "+FLAGS";
+
+        /// <summary>
+        /// Imap remove flags -flags
+        /// </summary>
+        protected const string IMAP_REMOVEFLAGS_COMMAND = "-FLAGS";
 		/// <summary>
 		/// Imap command terminator: \r\n
 		/// </summary>

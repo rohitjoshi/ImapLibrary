@@ -30,8 +30,10 @@ namespace ConsoleApplication1
 					Console.WriteLine("2    Select/Examine");
 					Console.WriteLine("3    Search");
 					Console.WriteLine("4    FetchHeader");
-					Console.WriteLine("5    GetQuota");
-					Console.WriteLine("6    Logout");
+                    Console.WriteLine("5    MoveMessage");
+                    Console.WriteLine("6    DeleteMessage");
+					Console.WriteLine("7    GetQuota");
+					Console.WriteLine("8    Logout");
 					Console.WriteLine("9    Exit");
 					Console.Write("Input  :[9]");
 					string sInput = Console.ReadLine();
@@ -140,8 +142,25 @@ namespace ConsoleApplication1
 							//c.GetHeader(oImap, sUid, sPart);
 
 						}
+					        break;
+                        case 5:
+					        {
+                                Console.Write("Message UID:");
+                                string sUid = Console.ReadLine();
+                                Console.Write("Folder To Move:");
+                                string sFolder = Console.ReadLine();
+                                oImap.MoveMessage(sUid,sFolder);
+					        }
 							break;
-						case 5:
+                        case 6:
+                            {
+                                Console.Write("Message UID:");
+                                string sUid = Console.ReadLine();
+                                oImap.SetFlag(sUid, "\\Deleted");
+                                oImap.Expunge();
+                            }
+                            break;
+						case 7:
 						{
 							bool bUnlimitedQuota = false;
 							int nUsedKBytes = 0;
@@ -152,7 +171,7 @@ namespace ConsoleApplication1
 								bUnlimitedQuota, nUsedKBytes, nTotalKBytes);
 						}
 							break;
-						case 6:
+						case 8:
 							oImap.LogOut();
 							break;
 						case 9:
