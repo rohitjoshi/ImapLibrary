@@ -1,0 +1,812 @@
+<!-- saved from url=(0007)http:// -->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Joshi.Utils.Imap.ImapBase</TITLE>
+<LINK REL=STYLESHEET HREF="../CommentReport.css" TYPE="text/css">
+</HEAD>
+<BODY topmargin=0 rightmargin=0 leftmargin=0 style="background-image: url(../titletile.jpg); background-repeat:repeat-x; background-position: 0 0;" >
+<DIV CLASS="PageHeading">Joshi.Utils.Imap.ImapBase Class</DIV>
+<DIV CLASS="Description">
+
+</DIV>
+<IMG src="../GradLeft.jpg" width=7 height=378 alt="" border="0" style="position:absolute; left:10; top:18;z-Index:2">
+<IMG src="../GradTop.jpg" width=352 height=7 alt="" border="0" align="top" style="position:absolute; left:10; top:18; z-index:1">
+<DIV CLASS="Remarks">
+<SPAN CLASS="RemarkHdrX">Access: </SPAN>Public</DIV>
+<DIV CLASS="Remarks">
+<SPAN CLASS="RemarkHdrX">Base Classes: </SPAN>Object</DIV>
+<TABLE CLASS="InfoTable" cellpadding=0 cellspacing=0>
+<TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD valign=top align=left width=9 bgcolor="#cccc66"><IMG SRC="../graycorner.jpg" align=top></TD>
+<TD CLASS="TableLightLabel" WIDTH=206>Members</TD>
+<TD CLASS="TableLightLabel" >Description</TD>
+<TD width=20>&nbsp;</TD>
+</TR>
+<TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP42.HTM" TARGET="CNTFRAME">IMAP_MSG_FLAG_SEEN</A></TD>
+<TD CLASS="TableLightDesc">
+Message flag:seen
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP43.HTM" TARGET="CNTFRAME">IMAP_MSG_FLAG_ANSWERED</A></TD>
+<TD CLASS="TableLightDesc">
+Message flag: answered
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP44.HTM" TARGET="CNTFRAME">IMAP_MSG_FLAG_FLAGGED</A></TD>
+<TD CLASS="TableLightDesc">
+Message flag: flagged
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP45.HTM" TARGET="CNTFRAME">IMAP_MSG_FLAG_DRAFT</A></TD>
+<TD CLASS="TableLightDesc">
+Message flag: draft
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP46.HTM" TARGET="CNTFRAME">IMAP_MSG_FLAG_DELETED</A></TD>
+<TD CLASS="TableLightDesc">
+Message flag: deleted
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP47.HTM" TARGET="CNTFRAME">IMAP_MAX_MSG_FLAGS</A></TD>
+<TD CLASS="TableLightDesc">
+Max Message flags: 10
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP48.HTM" TARGET="CNTFRAME">IMAP_DEFAULT_PORT</A></TD>
+<TD CLASS="TableLightDesc">
+Imap default port: 143
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP49.HTM" TARGET="CNTFRAME">IMAP_DEFAULT_TIMEOUT</A></TD>
+<TD CLASS="TableLightDesc">
+Imap default timeout:30 sec
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP50.HTM" TARGET="CNTFRAME">IMAP_COMMAND_VAL</A></TD>
+<TD CLASS="TableLightDesc">
+Imap Command Identifier value:Initial 0
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP51.HTM" TARGET="CNTFRAME">IMAP_COMMAND_PREFIX</A></TD>
+<TD CLASS="TableLightDesc">
+Imap command Identified prefix: IMAP00
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP52.HTM" TARGET="CNTFRAME">IMAP_COMMAND_IDENTIFIER</A></TD>
+<TD CLASS="TableLightDesc">
+Imap command identified which is combination of
+Imap identifier prefix and val
+eg. Prefix:IMAP00, Val: 1
+Imap command Identified= IMAP001
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP54.HTM" TARGET="CNTFRAME">IMAP_SERVER_RESPONSE_OK</A></TD>
+<TD CLASS="TableLightDesc">
+Imap Server OK response which is combination of 
+Imap Identifier and Imap OK response.
+eg. IMAP001 OK
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP56.HTM" TARGET="CNTFRAME">IMAP_SERVER_RESPONSE_NO</A></TD>
+<TD CLASS="TableLightDesc">
+Imap Server NO response which is combination of 
+Imap Identifier and Imap NO response.
+eg. IMAP001 NO
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP58.HTM" TARGET="CNTFRAME">IMAP_SERVER_RESPONSE_BAD</A></TD>
+<TD CLASS="TableLightDesc">
+Imap Server BAD response which is combination of
+Imap Identifier and Imap BAD response.
+eg. IMAP001 BAD
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP60.HTM" TARGET="CNTFRAME">IMAP_UNTAGGED_RESPONSE_PREFIX</A></TD>
+<TD CLASS="TableLightDesc">
+Imap Untagged response prefix: *
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP61.HTM" TARGET="CNTFRAME">IMAP_OK_RESPONSE</A></TD>
+<TD CLASS="TableLightDesc">
+Impa ok response : OK
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP62.HTM" TARGET="CNTFRAME">IMAP_NO_RESPONSE</A></TD>
+<TD CLASS="TableLightDesc">
+Imap no response: NO
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP63.HTM" TARGET="CNTFRAME">IMAP_BAD_RESPONSE</A></TD>
+<TD CLASS="TableLightDesc">
+Imap bad response :BAD
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP64.HTM" TARGET="CNTFRAME">IMAP_BAD_SERVER_RESPONSE</A></TD>
+<TD CLASS="TableLightDesc">
+Imap bad server response : "* BAD"
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP65.HTM" TARGET="CNTFRAME">IMAP_OK_SERVER_RESPONSE</A></TD>
+<TD CLASS="TableLightDesc">
+Imap ok server response: "* OK"
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP66.HTM" TARGET="CNTFRAME">IMAP_CAPABILITY_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap capability command : CAPABILITY
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP67.HTM" TARGET="CNTFRAME">IMAP_CONNECT_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap connect command :CONNECT
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP68.HTM" TARGET="CNTFRAME">IMAP_LOGIN_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap login command : LOGIN userid  password
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP69.HTM" TARGET="CNTFRAME">IMAP_LOGOUT_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap logout command : LOGOUT
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP70.HTM" TARGET="CNTFRAME">IMAP_SELECT_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap select command : SELECT INBOX
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP71.HTM" TARGET="CNTFRAME">IMAP_EXAMINE_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap examine command : EXAMINE INBOX
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP72.HTM" TARGET="CNTFRAME">IMAP_APPEND_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap append command : APPEND
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP73.HTM" TARGET="CNTFRAME">IMAP_QUOTA_RESPONSE</A></TD>
+<TD CLASS="TableLightDesc">
+Imap quota response : QUOTA
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP74.HTM" TARGET="CNTFRAME">IMAP_GETQUOTA_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap get quota command : GETQUOTAROOT 
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP75.HTM" TARGET="CNTFRAME">IMAP_APPEND_RESPONSE_START</A></TD>
+<TD CLASS="TableLightDesc">
+Imap append response start : [
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP76.HTM" TARGET="CNTFRAME">IMAP_APPEND_RESPONSE_END</A></TD>
+<TD CLASS="TableLightDesc">
+Imap append response end : ]
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP77.HTM" TARGET="CNTFRAME">IMAP_GO_AHEAD_RESPONSE</A></TD>
+<TD CLASS="TableLightDesc">
+Imap go ahead response: +
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP78.HTM" TARGET="CNTFRAME">IMAP_SEARCH_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap uid search command : UID SEARCH
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP79.HTM" TARGET="CNTFRAME">IMAP_SEARCH_RESPONSE</A></TD>
+<TD CLASS="TableLightDesc">
+Imap search command : SEARCH
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP80.HTM" TARGET="CNTFRAME">IMAP_UIDFETCH_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap uid fetch command : UID FETCH
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP81.HTM" TARGET="CNTFRAME">IMAP_FETCH_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap fetch command : FETCH
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP82.HTM" TARGET="CNTFRAME">IMAP_BODYSTRUCTURE_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap BodyStructure command
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP83.HTM" TARGET="CNTFRAME">IMAP_UIDSTORE_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap uid store command
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP84.HTM" TARGET="CNTFRAME">IMAP_EXPUNGE_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap expunge command
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP85.HTM" TARGET="CNTFRAME">IMAP_NOOP_COMMAND</A></TD>
+<TD CLASS="TableLightDesc">
+Imap noop command : NOOP
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP86.HTM" TARGET="CNTFRAME">IMAP_COMMAND_EOL</A></TD>
+<TD CLASS="TableLightDesc">
+Imap command terminator: \r\n
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP87.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_NIL</A></TD>
+<TD CLASS="TableLightDesc">
+Imap message nil size : NIL
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP88.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_HEADER_EOL</A></TD>
+<TD CLASS="TableLightDesc">
+Imap message header terminator : \r\n
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP89.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_SIZE_START</A></TD>
+<TD CLASS="TableLightDesc">
+Imap message size start : '{'
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP90.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_SIZE_END</A></TD>
+<TD CLASS="TableLightDesc">
+Imap message size end : '}'
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP91.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_CONTENT_TYPE</A></TD>
+<TD CLASS="TableLightDesc">
+Imap message content type : "Content-Type: "
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP92.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_RFC822</A></TD>
+<TD CLASS="TableLightDesc">
+Imap mesage content type: rfc822
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP93.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_ID</A></TD>
+<TD CLASS="TableLightDesc">
+Imap message id
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP94.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_MULTIPART</A></TD>
+<TD CLASS="TableLightDesc">
+Imap mesage content type: multipart
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP95.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_CONTENT_ENCODING</A></TD>
+<TD CLASS="TableLightDesc">
+Imap content encoding : "Content-Transfer-Encoding: "
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP96.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_CONTENT_DESC</A></TD>
+<TD CLASS="TableLightDesc">
+Imap content description : "Content-Description: "
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP97.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_CONTENT_DISP</A></TD>
+<TD CLASS="TableLightDesc">
+Imap content disposition : "Content-Disposition: "
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP98.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_CONTENT_SIZE</A></TD>
+<TD CLASS="TableLightDesc">
+Imap content size
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP99.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_CONTENT_LINES</A></TD>
+<TD CLASS="TableLightDesc">
+Imap content lines
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP100.HTM" TARGET="CNTFRAME">IMAP_MESSAGE_BASE64_ENCODING</A></TD>
+<TD CLASS="TableLightDesc">
+Imap message base64 encoding : BASE64
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP101.HTM" TARGET="CNTFRAME">IMAP_MSG_DEFAULT_PART</A></TD>
+<TD CLASS="TableLightDesc">
+Imap message default part : 1
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP102.HTM" TARGET="CNTFRAME">IMAP_HEADER_SENDER_TAG</A></TD>
+<TD CLASS="TableLightDesc">
+Imap header Sender tag
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP103.HTM" TARGET="CNTFRAME">IMAP_HEADER_FROM_TAG</A></TD>
+<TD CLASS="TableLightDesc">
+Imap header from tag
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP104.HTM" TARGET="CNTFRAME">IMAP_HEADER_IN_REPLY_TO_TAG</A></TD>
+<TD CLASS="TableLightDesc">
+Imap header in-reply-to tag
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP105.HTM" TARGET="CNTFRAME">IMAP_HEADER_REPLY_TO_TAG</A></TD>
+<TD CLASS="TableLightDesc">
+IKmap header reply-to tag
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP106.HTM" TARGET="CNTFRAME">IMAP_HEADER_TO_TAG</A></TD>
+<TD CLASS="TableLightDesc">
+Imap header to tag
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP107.HTM" TARGET="CNTFRAME">IMAP_HEADER_CC_TAG</A></TD>
+<TD CLASS="TableLightDesc">
+Imap header cc tag
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP108.HTM" TARGET="CNTFRAME">IMAP_HEADER_BCC_TAG</A></TD>
+<TD CLASS="TableLightDesc">
+Imap header bcc tag
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP109.HTM" TARGET="CNTFRAME">IMAP_HEADER_SUBJECT_TAG</A></TD>
+<TD CLASS="TableLightDesc">
+Imap header subject tag
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP110.HTM" TARGET="CNTFRAME">IMAP_HEADER_DATE_TAG</A></TD>
+<TD CLASS="TableLightDesc">
+Imap header date tag
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP111.HTM" TARGET="CNTFRAME">IMAP_PLAIN_TEXT</A></TD>
+<TD CLASS="TableLightDesc">
+Imap body type
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP112.HTM" TARGET="CNTFRAME">IMAP_AUDIO_WAV</A></TD>
+<TD CLASS="TableLightDesc">
+Imap audio wave:  audio/wav
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP113.HTM" TARGET="CNTFRAME">IMAP_VIDEO_MPEG4</A></TD>
+<TD CLASS="TableLightDesc">
+Imap video mpeg4  : video/mpeg4
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP114.HTM" TARGET="CNTFRAME">m_sHost</A></TD>
+<TD CLASS="TableLightDesc">
+Imap host
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP115.HTM" TARGET="CNTFRAME">m_nPort</A></TD>
+<TD CLASS="TableLightDesc">
+Imap port : default IMAP_DEFAULT_PORT : 143
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP116.HTM" TARGET="CNTFRAME">m_sUserId</A></TD>
+<TD CLASS="TableLightDesc">
+User id
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP117.HTM" TARGET="CNTFRAME">m_sPassword</A></TD>
+<TD CLASS="TableLightDesc">
+User Password
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP118.HTM" TARGET="CNTFRAME">m_bIsConnected</A></TD>
+<TD CLASS="TableLightDesc">
+Is Imap server connected
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP119.HTM" TARGET="CNTFRAME">m_oImapServ</A></TD>
+<TD CLASS="TableLightDesc">
+Tcpclient object
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP120.HTM" TARGET="CNTFRAME">m_oNetStrm</A></TD>
+<TD CLASS="TableLightDesc">
+Network stream object
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP121.HTM" TARGET="CNTFRAME">m_oRdStrm</A></TD>
+<TD CLASS="TableLightDesc">
+StreamReader object
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP122.HTM" TARGET="CNTFRAME">ImapResponseEnum</A></TD>
+<TD CLASS="TableLightDesc">
+Imap server response result
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP127.HTM" TARGET="CNTFRAME">LogTypeEnum</A></TD>
+<TD CLASS="TableLightDesc">
+Log type enum
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP133.HTM" TARGET="CNTFRAME">Log</A></TD>
+<TD CLASS="TableLightDesc">
+Logging function
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP134.HTM" TARGET="CNTFRAME">Connect</A></TD>
+<TD CLASS="TableLightDesc">
+Connect to specified host and port
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP135.HTM" TARGET="CNTFRAME">Disconnect</A></TD>
+<TD CLASS="TableLightDesc">
+Disconnect connection with Imap server
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP136.HTM" TARGET="CNTFRAME">SendAndReceive</A></TD>
+<TD CLASS="TableLightDesc">
+Send command to server and retrieve response
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP137.HTM" TARGET="CNTFRAME">Receive</A></TD>
+<TD CLASS="TableLightDesc">
+ retrieve response
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP138.HTM" TARGET="CNTFRAME">SendAndReceiveByNumLines</A></TD>
+<TD CLASS="TableLightDesc">
+Send command to server and retrieve response
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP139.HTM" TARGET="CNTFRAME">ReceiveBuffer</A></TD>
+<TD CLASS="TableLightDesc">
+Read the Server Response by specified size
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP140.HTM" TARGET="CNTFRAME">Capability</A></TD>
+<TD CLASS="TableLightDesc">
+IMAP Capability command
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR></TABLE>
+</BODY>
+</HTML>

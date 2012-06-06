@@ -1,0 +1,368 @@
+<!-- saved from url=(0007)http:// -->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Joshi.Utils.Imap.Imap</TITLE>
+<LINK REL=STYLESHEET HREF="../CommentReport.css" TYPE="text/css">
+</HEAD>
+<BODY topmargin=0 rightmargin=0 leftmargin=0 style="background-image: url(../titletile.jpg); background-repeat:repeat-x; background-position: 0 0;" >
+<DIV CLASS="PageHeading">Joshi.Utils.Imap.Imap Class</DIV>
+<DIV CLASS="Description">
+
+Imap class implementes IMAP client API
+<P>
+
+</DIV>
+<IMG src="../GradLeft.jpg" width=7 height=378 alt="" border="0" style="position:absolute; left:10; top:18;z-Index:2">
+<IMG src="../GradTop.jpg" width=352 height=7 alt="" border="0" align="top" style="position:absolute; left:10; top:18; z-index:1">
+<DIV CLASS="Remarks">
+<SPAN CLASS="RemarkHdrX">Access: </SPAN>Public</DIV>
+<DIV CLASS="Remarks">
+<SPAN CLASS="RemarkHdrX">Base Classes: </SPAN>ImapBase</DIV>
+<TABLE CLASS="InfoTable" cellpadding=0 cellspacing=0>
+<TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD valign=top align=left width=9 bgcolor="#cccc66"><IMG SRC="../graycorner.jpg" align=top></TD>
+<TD CLASS="TableLightLabel" WIDTH=206>Members</TD>
+<TD CLASS="TableLightLabel" >Description</TD>
+<TD width=20>&nbsp;</TD>
+</TR>
+<TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP4.HTM" TARGET="CNTFRAME">m_bIsLoggedIn</A></TD>
+<TD CLASS="TableLightDesc">
+If user has logged in to his mailbox.
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP5.HTM" TARGET="CNTFRAME">m_sMailboxName</A></TD>
+<TD CLASS="TableLightDesc">
+Mailbox (Folder) name. Default INBOX.
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP6.HTM" TARGET="CNTFRAME">m_bIsFolderSelected</A></TD>
+<TD CLASS="TableLightDesc">
+If folder is selected.
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP7.HTM" TARGET="CNTFRAME">m_bIsFolderExamined</A></TD>
+<TD CLASS="TableLightDesc">
+if folder is examined.
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP8.HTM" TARGET="CNTFRAME">m_nTotalMessages</A></TD>
+<TD CLASS="TableLightDesc">
+Total number of messages in mailbox.
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP9.HTM" TARGET="CNTFRAME">m_nRecentMessages</A></TD>
+<TD CLASS="TableLightDesc">
+Number of recent messages in mailbox.
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP10.HTM" TARGET="CNTFRAME">m_nFirstUnSeenMsgUID</A></TD>
+<TD CLASS="TableLightDesc">
+First unseen message UID
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP11.HTM" TARGET="CNTFRAME">Login</A></TD>
+<TD CLASS="TableLightDesc">
+ Login to specified Imap host and default port (143)
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP12.HTM" TARGET="CNTFRAME">Login</A></TD>
+<TD CLASS="TableLightDesc">
+Login to specified Imap host and port
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP13.HTM" TARGET="CNTFRAME">LogOut</A></TD>
+<TD CLASS="TableLightDesc">
+Logout the user: It logout the user and disconnect the connetion from IMAP server.
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP14.HTM" TARGET="CNTFRAME">SelectFolder</A></TD>
+<TD CLASS="TableLightDesc">
+Select the sFolder/mailbox after login
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP15.HTM" TARGET="CNTFRAME">ExamineFolder</A></TD>
+<TD CLASS="TableLightDesc">
+Examine the sFolder/mailbox after login
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP16.HTM" TARGET="CNTFRAME">Restore</A></TD>
+<TD CLASS="TableLightDesc">
+Restore the connection using available old data
+Select the sFolder if previously selected
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP17.HTM" TARGET="CNTFRAME">HasEnoughQuota</A></TD>
+<TD CLASS="TableLightDesc">
+Check if enough quota is available
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP18.HTM" TARGET="CNTFRAME">GetQuota</A></TD>
+<TD CLASS="TableLightDesc">
+Get the quota for specific folder
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP19.HTM" TARGET="CNTFRAME">SearchMessage</A></TD>
+<TD CLASS="TableLightDesc">
+Search the messages by specified criterias
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP20.HTM" TARGET="CNTFRAME">FetchPartBody</A></TD>
+<TD CLASS="TableLightDesc">
+Fetch the body for specified part
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP21.HTM" TARGET="CNTFRAME">FetchPartHeader</A></TD>
+<TD CLASS="TableLightDesc">
+Fetch Header of the message uid and part
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP22.HTM" TARGET="CNTFRAME">FetchMessage</A></TD>
+<TD CLASS="TableLightDesc">
+Fetch the full message
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP23.HTM" TARGET="CNTFRAME">GetBodyStructure</A></TD>
+<TD CLASS="TableLightDesc">
+Get the Body structure of the message.
+If message is single part then first part is 1
+If message is multipart then first part is 0
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP24.HTM" TARGET="CNTFRAME">ParseBodyStructure</A></TD>
+<TD CLASS="TableLightDesc">
+Parse the bodystructure and store as XML Element
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP25.HTM" TARGET="CNTFRAME">GetBody</A></TD>
+<TD CLASS="TableLightDesc">
+Get the message body for specified part
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP26.HTM" TARGET="CNTFRAME">GetHeader</A></TD>
+<TD CLASS="TableLightDesc">
+Get the header for specific partNumber and Message UID
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP27.HTM" TARGET="CNTFRAME">IsMultipart</A></TD>
+<TD CLASS="TableLightDesc">
+Check if this message is multipart
+To Identify multipart message, the content-type is either
+multipart or rfc822
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP28.HTM" TARGET="CNTFRAME">IsNilString</A></TD>
+<TD CLASS="TableLightDesc">
+Returns true if starts with NIL
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP29.HTM" TARGET="CNTFRAME">GetContentType</A></TD>
+<TD CLASS="TableLightDesc">
+Get the content type
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP30.HTM" TARGET="CNTFRAME">GetContentDisposition</A></TD>
+<TD CLASS="TableLightDesc">
+Get Content Disposition
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP31.HTM" TARGET="CNTFRAME">ParseQuotedString</A></TD>
+<TD CLASS="TableLightDesc">
+Parse the quoted string in body structure
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP32.HTM" TARGET="CNTFRAME">ParseString</A></TD>
+<TD CLASS="TableLightDesc">
+Parse the string (seperated by spaces or parenthesis)
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP33.HTM" TARGET="CNTFRAME">ParseLanguage</A></TD>
+<TD CLASS="TableLightDesc">
+Parse the language or list of languages in body structure
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP34.HTM" TARGET="CNTFRAME">ParseParameters</A></TD>
+<TD CLASS="TableLightDesc">
+Parse the parameter in body structure
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP35.HTM" TARGET="CNTFRAME">ParseExtension</A></TD>
+<TD CLASS="TableLightDesc">
+Parse the extension in body structure
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP36.HTM" TARGET="CNTFRAME">ParseAddressList</A></TD>
+<TD CLASS="TableLightDesc">
+Parse the address string
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP37.HTM" TARGET="CNTFRAME">ParseAddress</A></TD>
+<TD CLASS="TableLightDesc">
+Parse one address and format the string
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP38.HTM" TARGET="CNTFRAME">ParseEnvelope</A></TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP39.HTM" TARGET="CNTFRAME">FindAndRemove</A></TD>
+<TD CLASS="TableLightDesc">
+find the given character and remove
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR><TR height=20>
+<TD width=20>&nbsp;</TD>
+<TD CLASS="TableLightDesc">&nbsp;</TD>
+<TD CLASS="TableLightDesc"><A HREF="CWP40.HTM" TARGET="CNTFRAME">GetResponseSize</A></TD>
+<TD CLASS="TableLightDesc">
+Get the Size of the fetch command response
+response will look like "{&lt;size&gt;}"
+<P>
+</TD>
+<TD width=20>&nbsp;</TD>
+</TR></TABLE>
+</BODY>
+</HTML>

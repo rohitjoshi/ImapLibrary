@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImapLibrary", "ImapLibrary\ImapLibrary.csproj", "{CABA26F4-9260-4C3A-80ED-BF722156DD93}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImapLibraryTest", "ImapLibraryTest\ImapLibraryTest.csproj", "{2E3E6121-C7C1-4C06-8B04-01036024266B}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{CABA26F4-9260-4C3A-80ED-BF722156DD93}.Debug.ActiveCfg = Debug|.NET
+		{CABA26F4-9260-4C3A-80ED-BF722156DD93}.Debug.Build.0 = Debug|.NET
+		{CABA26F4-9260-4C3A-80ED-BF722156DD93}.Release.ActiveCfg = Release|.NET
+		{CABA26F4-9260-4C3A-80ED-BF722156DD93}.Release.Build.0 = Release|.NET
+		{2E3E6121-C7C1-4C06-8B04-01036024266B}.Debug.ActiveCfg = Debug|.NET
+		{2E3E6121-C7C1-4C06-8B04-01036024266B}.Debug.Build.0 = Debug|.NET
+		{2E3E6121-C7C1-4C06-8B04-01036024266B}.Release.ActiveCfg = Release|.NET
+		{2E3E6121-C7C1-4C06-8B04-01036024266B}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
