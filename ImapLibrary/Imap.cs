@@ -732,6 +732,86 @@ namespace Joshi.Utils.Imap
 
         }
 
+        /// <summary>
+        /// Get the message size
+        /// </summary>
+        /// <param name="sUid"></param>
+        /// <returns>message size</returns>
+        public long GetMessageSize(string sUid)
+        {
+            if (String.IsNullOrEmpty(sUid))
+            {
+                throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_INVALIDPARAM, "Invalid uid");
+            }
+            ImapResponseEnum eImapResponse = ImapResponseEnum.IMAP_SUCCESS_RESPONSE;
+
+
+            if (!m_bIsLoggedIn)
+            {
+                try
+                {
+                    Restore(false);
+                }
+                catch (ImapException e)
+                {
+                    if (e.Type != ImapException.ImapErrorEnum.IMAP_ERR_INSUFFICIENT_DATA)
+                        throw e;
+
+                    throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_NOTCONNECTED);
+                }
+            }
+            if (!m_bIsFolderSelected && !m_bIsFolderExamined)
+            {
+                throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_NOTSELECTED);
+            }
+
+            ArrayList asResultArray = new ArrayList();
+            string sCommand = IMAP_UIDFETCH_COMMAND;
+            sCommand += " " + sUid + " " + IMAP_RFC822_SIZE_COMMAND + IMAP_COMMAND_EOL;
+            try
+            {
+                eImapResponse = SendAndReceive(sCommand, ref asResultArray);
+                if (eImapResponse != ImapResponseEnum.IMAP_SUCCESS_RESPONSE)
+                {
+                    throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_SEARCH, asResultArray[0].ToString());
+                }
+                string sLastLine = IMAP_SERVER_RESPONSE_OK;
+                string sBodyStruct = "";
+                bool bResult = false;
+                int nStart = -1;
+                foreach (string sLine in asResultArray)
+                {
+                    nStart = sLine.IndexOf(IMAP_FETCH_COMMAND);
+                    if (sLine.StartsWith(IMAP_UNTAGGED_RESPONSE_PREFIX) &&
+                        (nStart != -1))
+                    {
+                        sBodyStruct = sLine;
+                    }
+                    else if (sLine.StartsWith(sLastLine))
+                    {
+                        bResult = true;
+                        break;
+                    }
+                }
+                if (!bResult)
+                {
+                    throw new ImapException(ImapException.ImapErrorEnum.IMAP_ERR_FETCHSIZE);
+                }
+                nStart = sBodyStruct.IndexOf(IMAP_RFC822_SIZE_COMMAND);
+                int nEnd = sBodyStruct.IndexOf(")");
+                string size = sBodyStruct.Substring(nStart + IMAP_RFC822_SIZE_COMMAND.Length,
+                                                    nEnd - (nStart + IMAP_RFC822_SIZE_COMMAND.Length));
+               
+                return Convert.ToUInt32(size.Trim());
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
 
 /// <summary>
 /// Search the messages by specified criterias

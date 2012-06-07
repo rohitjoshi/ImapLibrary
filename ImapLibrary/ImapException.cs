@@ -98,7 +98,11 @@ namespace Joshi.Utils.Imap
 			/// <summary>
 			/// failure to fetch a IMAP message
 			/// </summary>
-			IMAP_ERR_FETCHMSG,           
+			IMAP_ERR_FETCHMSG,
+            /// <summary>
+            /// failure to fetch a IMAP message size
+            /// </summary>
+            IMAP_ERR_FETCHSIZE,
 			/// <summary>
 			/// failure to allocate memory
 			/// </summary>
@@ -246,6 +250,8 @@ namespace Joshi.Utils.Imap
 					return "Failure fetching mime for the message.";
 				case ImapErrorEnum.IMAP_ERR_FETCHMSG:    
 					return "Failure fetching message from IMAP folder/mailbox.";
+                case ImapErrorEnum.IMAP_ERR_FETCHSIZE:
+                    return "Failure fetching message size from IMAP folder/mailbox.";
 				case ImapErrorEnum.IMAP_ERR_MEMALLOC:    
 					return "Failure allocating memory.";
 				case ImapErrorEnum.IMAP_ERR_ENCODINGERROR:    

@@ -127,6 +127,11 @@ namespace Joshi.Utils.Imap
 		/// Imap ok server response: "* OK"
 		/// </summary>
 		protected const string    IMAP_OK_SERVER_RESPONSE  = "* OK";
+
+        /// <summary>
+        /// Imap Server response "* CAPABILITY"
+        /// </summary>
+        protected const string IMAP_CAPABILITY_SERVER_RESPONSE = "* CAPABILITY";
 		/// <summary>
 		/// Imap capability command : CAPABILITY
 		/// </summary>
@@ -222,6 +227,11 @@ namespace Joshi.Utils.Imap
         /// Imap remove flags -flags
         /// </summary>
         protected const string IMAP_REMOVEFLAGS_COMMAND = "-FLAGS";
+
+        /// <summary>
+        /// Imap RFC822.SIZE
+        /// </summary>
+        protected const string IMAP_RFC822_SIZE_COMMAND = "RFC822.SIZE";
 		/// <summary>
 		/// Imap command terminator: \r\n
 		/// </summary>
@@ -485,7 +495,7 @@ namespace Joshi.Utils.Imap
 				
 				
 				string sResult = m_oRdStrm.ReadLine();
-				if (sResult.StartsWith(IMAP_OK_SERVER_RESPONSE)== true)
+                if ((sResult.StartsWith(IMAP_OK_SERVER_RESPONSE) == true) || (sResult.StartsWith(IMAP_CAPABILITY_SERVER_RESPONSE) == true))
 				{
 					Log (LogTypeEnum.IMAP, sResult);
 					eImapResponse = ImapResponseEnum.IMAP_SUCCESS_RESPONSE;

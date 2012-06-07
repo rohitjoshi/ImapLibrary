@@ -33,9 +33,11 @@ namespace ConsoleApplication1
                     Console.WriteLine("5    MoveMessage");
                     Console.WriteLine("6    DeleteMessage");
 					Console.WriteLine("7    GetQuota");
-					Console.WriteLine("8    Logout");
-					Console.WriteLine("9    Exit");
-					Console.Write("Input  :[9]");
+                    Console.WriteLine("8    GetMessageSize");
+					Console.WriteLine("9    Logout");
+					Console.WriteLine("10    Exit");
+                   
+					Console.Write("Input  :[10]");
 					string sInput = Console.ReadLine();
                     int input = 0;
                     try {
@@ -171,10 +173,19 @@ namespace ConsoleApplication1
 								bUnlimitedQuota, nUsedKBytes, nTotalKBytes);
 						}
 							break;
-						case 8:
+                        case 8:
+                            {
+                                Console.Write("Message UID:");
+                                string sUid = Console.ReadLine();
+
+                                long size = oImap.GetMessageSize(sUid);
+                               
+                            }
+                            break;
+						case 9:
 							oImap.LogOut();
 							break;
-						case 9:
+						case 10:
 							oImap.LogOut();
 							bNotExit = false;
 							break;
