@@ -32,12 +32,13 @@ namespace ConsoleApplication1
 					Console.WriteLine("4    FetchHeader");
                     Console.WriteLine("5    MoveMessage");
                     Console.WriteLine("6    DeleteMessage");
-					Console.WriteLine("7    GetQuota");
-                    Console.WriteLine("8    GetMessageSize");
-					Console.WriteLine("9    Logout");
-					Console.WriteLine("10    Exit");
+                    Console.WriteLine("7    MarkMessageUnRead");
+					Console.WriteLine("8    GetQuota");
+                    Console.WriteLine("9    GetMessageSize");
+					Console.WriteLine("10   Logout");
+					Console.WriteLine("11   Exit");
                    
-					Console.Write("Input  :[10]");
+					Console.Write("Input  :[11]");
 					string sInput = Console.ReadLine();
                     int input = 0;
                     try {
@@ -162,7 +163,15 @@ namespace ConsoleApplication1
                                 oImap.Expunge();
                             }
                             break;
-						case 7:
+                        case 7:
+                            {
+                                Console.Write("Message UID:");
+                                string sUid = Console.ReadLine();
+                                oImap.SetFlag(sUid, "\\Seen", true);
+                                oImap.Expunge();
+                            }
+                            break;
+						case 8:
 						{
 							bool bUnlimitedQuota = false;
 							int nUsedKBytes = 0;
@@ -173,7 +182,7 @@ namespace ConsoleApplication1
 								bUnlimitedQuota, nUsedKBytes, nTotalKBytes);
 						}
 							break;
-                        case 8:
+                        case 9:
                             {
                                 Console.Write("Message UID:");
                                 string sUid = Console.ReadLine();
@@ -182,10 +191,10 @@ namespace ConsoleApplication1
                                
                             }
                             break;
-						case 9:
+						case 10:
 							oImap.LogOut();
 							break;
-						case 10:
+						case 11:
 							oImap.LogOut();
 							bNotExit = false;
 							break;

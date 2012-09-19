@@ -571,7 +571,8 @@ namespace Joshi.Utils.Imap
 	    /// </summary>
 	    /// <param name="sUid"></param>
 	    /// <param name="flag"> E.g \Deleted </param>
-	    public void SetFlag(string sUid, string flag)
+	    /// <param name="removeFlag">Remove the flaf </param>
+	    public void SetFlag(string sUid, string flag, bool removeFlag=false)
         {
             if (String.IsNullOrEmpty(sUid))
             {
@@ -605,7 +606,7 @@ namespace Joshi.Utils.Imap
            
             ArrayList asResultArray = new ArrayList();
             string sCommand = IMAP_UIDSTORE_COMMAND;
-            sCommand += " " + sUid + " " + IMAP_SETFLAGS_COMMAND + " " + flag  + IMAP_COMMAND_EOL;
+            sCommand += " " + sUid + " " + (removeFlag?IMAP_REMOVEFLAGS_COMMAND:IMAP_SETFLAGS_COMMAND) + " " + flag + IMAP_COMMAND_EOL;
             try
             {
                 eImapResponse = SendAndReceive(sCommand, ref asResultArray);
@@ -676,6 +677,8 @@ namespace Joshi.Utils.Imap
             SetFlag(sUid, "\\Deleted");
             Expunge();
         }
+
+       
 
         /// <summary>
         /// Copy Message
