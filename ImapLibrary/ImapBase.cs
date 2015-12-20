@@ -697,17 +697,21 @@ namespace Joshi.Utils.Imap
 /// <param name="sBuffer"></param>
 /// <param name="nSize"></param>
 /// <returns></returns>
-		protected int ReceiveBuffer (ref string sBuffer, int nSize)
-		{
-			int nRead = -1;
-			char [] cBuff = new Char[nSize+1];
-			//cBuff[nSize+1] = '\0';
-			nRead = m_oRdStrm.Read(cBuff, 0, nSize);
-			string sTmp = new String(cBuff);
-			sBuffer = sTmp;
-			Log (LogTypeEnum.IMAP, sBuffer);
-			return nRead;
-		}
+        protected int ReceiveBuffer(ref string sBuffer, int nSize)
+        {
+            int nRead = -1;
+            int tSize = 0;
+            char[] cBuff = new Char[nSize + 1];
+            while (tSize < nSize)
+            {
+                nRead = m_oRdStrm.Read(cBuff, 0, nSize - tSize);
+                string sTmp = new String(cBuff);
+                sBuffer += sTmp.Substring(0, nRead);
+                tSize = tSize + nRead;
+            }
+            Log(LogTypeEnum.IMAP, sBuffer);
+            return nRead;
+        }
 
 
 		
