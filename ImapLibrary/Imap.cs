@@ -98,7 +98,7 @@ namespace Joshi.Utils.Imap
 					if (m_sHost == sHost && m_nPort == nPort)
 					{
 						if (m_sUserId == sUserId &&
-							m_sPassword == sPassword ) 
+							m_sPassword == "\"" + sPassword + "\"" ) 
 						{
 							Log (LogTypeEnum.INFO, "Connected and Logged in already");
 							return;
@@ -129,7 +129,7 @@ namespace Joshi.Utils.Imap
 			
 			ArrayList asResultArray = new ArrayList();
 			string sCommand = IMAP_LOGIN_COMMAND;
-			sCommand += " " + sUserId + " " + sPassword;
+			sCommand += " " + sUserId + " " + "\"" + sPassword + "\"";
 			sCommand += IMAP_COMMAND_EOL;
 			try
 			{
@@ -138,7 +138,7 @@ namespace Joshi.Utils.Imap
 				{
 					m_bIsLoggedIn = true;
 					m_sUserId = sUserId;
-					m_sPassword = sPassword;
+					m_sPassword = "\"" + sPassword + "\"";
 				}
 				else throw e_login;
 				
